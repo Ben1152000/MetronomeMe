@@ -1,1 +1,1 @@
-highscore:35
+highscore:7

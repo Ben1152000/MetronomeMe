@@ -96,7 +96,7 @@ def showGameScreen():
 	DISPLAYSCREEN.fill(BGCOLOR) # paint background
 	bar.render()
 	scoreCounter.render()
-	pygame.display.flip()
+	pygame.display.flip() # first screen update
 
 	# set up vars
 	time = 0
@@ -104,7 +104,6 @@ def showGameScreen():
 	dirty_rects = [] # for updating
 	while True: # main game loop
 	### Note to self: speed up main loop
-
 		for event in pygame.event.get(): # event handling loop
 		
 			if event.type == pygame.QUIT or event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
@@ -113,7 +112,7 @@ def showGameScreen():
 				bar.highlight()
 				if pressResponse(timeSinceEpoch) == 0:
 					return scoreCounter.score # display score
-				scoreCounter.score += pressResponse(timeSinceEpoch)
+				scoreCounter.increment(pressResponse(timeSinceEpoch))
 				timeSinceEpoch -= 1
 			if event.type == pygame.KEYUP:
 				bar.normal()
@@ -139,7 +138,8 @@ def showGameScreen():
 		dirty_rects.append(scoreCounter.render())
 		
 		# draw sprites to screen
-		pygame.display.update(dirty_rects)
+		scoreCounter.render()
+		pygame.display.update(dirty_rects) # this doesn't work for some reason. why?
 		dirty_rects = []
 		#print(dt)
 

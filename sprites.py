@@ -38,9 +38,11 @@ class Bar():
 		pygame.draw.rect(self.screen, self.drawColor, self.srect)
 		return self.dirty_rect
 
+	# change color to pressed-down color
 	def highlight(self):
 		self.drawColor = self.tcolor
 
+	# change color to normal color
 	def normal(self):
 		self.drawColor = self.scolor
 
@@ -58,17 +60,29 @@ class Text(object):
 	def render(self):
 		self.screen.blit(self.surf, self.rect)
 
-class Counter(Text):
+class Counter():
 	
 	def __init__(self, DISPLAYSCREEN, pos, start_value, FONT, color):
-		super(Counter, self).__init__(DISPLAYSCREEN, pos, start_value, FONT, color)
+		self.screen = DISPLAYSCREEN
+		self.font = FONT
+		self.pos = pos
+		self.color = color
 		self.score = int(start_value)
+		self.text = str(self.score)
+		self.surf = self.font.render(self.text, True, self.color)
+		self.rect = self.surf.get_rect(center = self.pos)
+
+	def increment(self, num):
+		self.score += int(num)
+		self.text = str(self.score)
+		self.surf = self.font.render(self.text, True, self.color)
+		self.rect = self.surf.get_rect(center = self.pos)
 
 	def render(self):
-		self.text = str(self.score)
-		super(Counter, self).render()
+		self.screen.blit(self.surf, self.rect)
 		return self.rect # return dirty rect
 
+# work-in-progress
 class Button():
 
 	def __init__(self, DISPLAYSCREEN, POS, SIZE, text, normal_color, down_color, highlight_color):
