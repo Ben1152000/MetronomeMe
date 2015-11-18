@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# runs the game
+
+SCRIPTPATH="`dirname \"$0\"`"
+cd "$SCRIPTPATH"
+python-32 "run_windowed.py"
