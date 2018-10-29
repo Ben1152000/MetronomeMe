@@ -2,7 +2,7 @@
 Metronome Me is a small keyboard game built with pygame.
 
 ### Preview:
-![Alt Text](https://media.giphy.com/media/8m4QYtgP0ZMxXwIaeR/giphy.gif)
+![Having fun!](https://media.giphy.com/media/9x5drtJ1MnBtc7NAgW/giphy.gif)
 
 ### Requirements:
 Required Packages/Programs:<br>
